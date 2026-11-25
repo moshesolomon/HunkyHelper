@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "HunkyHelper",
+  "version": "2.0.0",
+  "description": "Covers content from blocked users and users with a negative Reaction Score on soybooru.com.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "hunkyhelper@local",
+      "strict_min_version": "91.0"
+    }
+  },
+  "permissions": ["storage", "https://soybooru.com/*", "https://*.soybooru.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://soybooru.com/*", "https://*.soybooru.com/*"],
+      "js": ["blocklist.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": ["cover.png"],
+  "browser_action": {
+    "default_title": "HunkyHelper",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" }
+  },
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" }
+}

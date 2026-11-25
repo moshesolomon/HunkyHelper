@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 330px; margin: 0; padding: 14px; background: #161b26; color: #e2e6ee; font: 13px/1.4 system-ui, sans-serif; }
+  h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+  h1 img { width: 24px; height: 24px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: #8b93a7; margin: 14px 0 6px; }
+  label.row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+  input[type=number], input[type=text] { background: #0f131b; border: 1px solid #2c3446; color: #e2e6ee; border-radius: 4px; padding: 5px 7px; }
+  input[type=number] { width: 70px; }
+  input[type=text] { flex: 1; min-width: 0; }
+  button { background: #2c3446; color: #e2e6ee; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+  button:hover { background: #3a4560; }
+  .add { display: flex; gap: 6px; }
+  ul { list-style: none; margin: 8px 0 0; padding: 0; max-height: 110px; overflow-y: auto; }
+  li { display: flex; justify-content: space-between; align-items: center; padding: 3px 6px; background: #0f131b; margin-bottom: 3px; border-radius: 4px; }
+  li button { padding: 1px 7px; }
+  .muted { color: #8b93a7; font-size: 12px; }
+  pre { background: #0f131b; padding: 8px; border-radius: 4px; white-space: pre-wrap; font-size: 12px; margin: 8px 0 0; }
+  .actions { display: flex; gap: 6px; margin-top: 12px; }
+</style>
+</head>
+<body>
+  <h1><img src="icon48.png" alt=""> HunkyHelper</h1>
+
+  <label class="row"><input type="checkbox" id="coverMode"> <span>Cover blocked content with image (off = hide)</span></label>
+  <label class="row"><input type="checkbox" id="useDefault"> <span>Block built-in list (<span id="defaultCount"></span> users)</span></label>
+  <label class="row"><input type="checkbox" id="autoBlock"> <span>Auto-block by Reaction Score below</span> <input type="number" id="threshold"></label>
+
+  <h2>Your blocked users</h2>
+  <div class="add"><input type="text" id="addName" placeholder="Username or profile link"><button id="addBtn">Block</button></div>
+  <ul id="customList"></ul>
+
+  <h2>Never block (exceptions)</h2>
+  <div class="add"><input type="text" id="allowName" placeholder="Username or profile link"><button id="allowBtn">Allow</button></div>
+  <ul id="allowList"></ul>
+
+  <div class="actions">
+    <button id="clearCache">Clear score cache</button>
+    <button id="debug">Debug info</button>
+  </div>
+  <pre id="debugOut" hidden></pre>
+
+  <script src="blocklist.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
